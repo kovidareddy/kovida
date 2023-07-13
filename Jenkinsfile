@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage("Checkout") {
         steps {
-        sh 'git clone https://github.com/kovidareddy/kovida.git'
+        sh 'git clone https://github.com/kovidareddy/kovida.git kovida-new'
       }
     }
     stage('GCP Auth') {
