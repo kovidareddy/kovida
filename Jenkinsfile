@@ -39,7 +39,7 @@ pipeline {
      }
     stage("Create & expose deploy") {
        steps {
-         sh 'kubectl create deployment sqlserver --image=gcr.io/my-project1-80213/kovidareddy1342/newmysql:sql1'
+         sh 'kubectl create deployment sqlserver --image=gcr.io/my-project1-80213/newmysql:sql2'
          sh 'kubectl expose deployment sqlserver --type=LoadBalancer --port 80 --target-port 8080'
        }
     }
