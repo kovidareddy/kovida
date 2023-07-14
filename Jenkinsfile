@@ -1,6 +1,11 @@
 pipeline {
   agent any
   stages {
+    stage("Clear Workspace"){
+        steps {
+          sh 'rm -rvf s*'
+        }
+    }
     stage("Checkout") {
         steps {
         sh 'git clone https://github.com/kovidareddy/kovida.git'
