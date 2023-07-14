@@ -38,7 +38,7 @@ pipeline {
      }
     stage("Docker push") { 
         steps {
-             bat 'docker push gcr.io/my-project1-80213/newmysql:sql2'
+             sh 'docker push gcr.io/my-project1-80213/newmysql:sql2'
            }
         }
      stage("cluster create") {
