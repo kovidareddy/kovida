@@ -31,14 +31,11 @@ pipeline {
          sh 'docker tag kovidareddy1342/newmysql:sql1 gcr.io/my-project1-80213/newmysql:sql2'
       }
     }
-     stage("Auth") { 
-        steps {
-             sh 'gcloud auth configure-docker'
-        }
-     }
+ 
     stage("Docker push") { 
         steps {
-             sh 'docker push gcr.io/my-project1-80213/newmysql:sql2'
+           sh 'gcloud auth configure-docker'
+           sh 'docker push gcr.io/my-project1-80213/newmysql:sql2'
            }
         }
      stage("cluster create") {
