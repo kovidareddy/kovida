@@ -38,8 +38,7 @@ pipeline {
      }
     stage("Docker push") { 
         steps {
-             sh 'gcloud auth configure-docker'
-             sh 'docker push gcr.io/my-project1-80213/newmysql:sql2'
+             bat 'docker push gcr.io/my-project1-80213/newmysql:sql2'
            }
         }
      stage("cluster create") {
