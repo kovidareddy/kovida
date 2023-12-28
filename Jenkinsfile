@@ -28,14 +28,14 @@ pipeline {
     }
     stage("Docker tag") {
       steps {     
-         sh 'docker tag kovidareddy1342/newmysql:sql1 gcr.io/my-project1-80213/newmysql:sql2'
+         sh 'docker tag kovidareddy1342/newmysql:sql1 gcr.io/my-project2-35783/newmysql:sql2'
       }
     }
  
     stage("Docker push") { 
         steps {
            sh 'gcloud auth configure-docker'
-           sh 'docker push gcr.io/my-project1-80213/newmysql:sql2'
+           sh 'docker push gcr.io/my-project2-35783/newmysql:sql2'
            }
         }
      stage("cluster create") {
@@ -45,7 +45,7 @@ pipeline {
      }
     stage("Create & expose deploy") {
        steps {
-         sh 'kubectl create deployment sqlserver --image=gcr.io/my-project1-80213/newmysql:sql2'
+         sh 'kubectl create deployment sqlserver --image=gcr.io/my-project2-35783/newmysql:sql2'
          sh 'kubectl expose deployment sqlserver --type=LoadBalancer --port 80 --target-port 8080'
        }
     }
