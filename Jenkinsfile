@@ -13,14 +13,14 @@ pipeline {
     }
     stage('GCP Auth') {
         steps {
-       withCredential([usernameColonPassword(credentialsId: 'GCP_CREDENTIALS', variable: 'GCP_PROJECT'), file(credentialsId: 'service_account', variable: 'service_account')])  {
+      withCredentials([usernameColonPassword(credentialsId: 'GCP_CREDENTIALS', variable: 'gcp'), file(credentialsId: 'service_account', variable: 'service')]) {
          sh 'gcloud auth activate-service-account --key-file=$GCP_CREDENTIALS'
         }
       }
     }
     stage("Docker pull") {
       steps {
-        withCredentials([usernameColonPassword(credentialsId: 'Docker_credentials', variable: 'docker_credentials')]) {
+        withCredentials([usernameColonPassword(credentialsId: 'Docker_credentials', variable: 'docker')]) {
         sh "docker login -u kovidareddy1342 -p pandu1342"
         sh 'docker pull kovidareddy1342/newmysql:sql1'
        }
