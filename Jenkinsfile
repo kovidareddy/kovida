@@ -40,7 +40,7 @@ pipeline {
         }
      stage("cluster create") {
        steps {
-          sh 'gcloud container clusters create sqlserver-cluster --num-nodes 3 --location=asia-south1-c'
+          sh 'gcloud container clusters create sqlserver-cluster --num-nodes 3 --location=asia-south1-b'
        }
      }
     stage("Create & expose deploy") {
