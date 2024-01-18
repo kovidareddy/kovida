@@ -20,7 +20,7 @@ pipeline {
     }
     stage("Docker pull") {
       steps {
-        withCredentials([usernameColonPassword(credentialsId: 'Docker_credentials', variable: 'docker')]) {
+        withCredentials([usernameColonPassword(credentialsId: 'docker_credentials', variable: 'docker_credentials')]) {
         sh "docker login -u kovidareddy1342 -p pandu1342"
         sh 'docker pull kovidareddy1342/newmysql:sql1'
        }
